@@ -26,5 +26,6 @@ namespace Assignment5.Models
         public string Category { get; set; }
         [Required]
         public double Price { get; set; }
+        public int PageNumbers { get; set; }// this is what we added to the database
     }
 }

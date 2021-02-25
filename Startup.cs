@@ -56,11 +56,15 @@ namespace Assignment5
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
+                endpoints.MapControllerRoute( // this customises the display in the URL
+                   "Pagination",
+                   "Books/P{page}", // e user can type /P2 to access the second page and /P3 to access the third page and so on.
 
+                   new { Controller = "Home", action = "Index" });
+
+                endpoints.MapDefaultControllerRoute();
+            });
+            //Once the database has already been created, you don't need this anymore.
             SeedData.EnsurePopulated(app);
         }
     }
