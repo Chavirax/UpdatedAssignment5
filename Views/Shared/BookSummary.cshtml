@@ -1,0 +1,31 @@
+﻿
+@model Book
+
+<div class="list-group" style="width:800px; margin:0 auto;">
+    <h4 class="list-group-item"><strong>@Model.Title</strong></h4>
+    <p class="list-group-item">Author: @Model.Author</p>
+    <p class="list-group-item">Publisher: @Model.Publisher</p>
+    <p class="list-group-item">ISBN: @Model.Isbn</p>
+    <p class="list-group-item">Number of Pages: @Model.PageNumbers</p> <!--Number of pages was added after the first set of seed data.-->
+    <!--
+    <p class="list-group-item">Price: $@Model.Price</p>
+    -->
+    <h5 class="list-group-item">
+        <span class="badge badge-pill badge-info" style="float:left">
+            <p>Price: $@Model.Price</p>
+        </span>
+    </h5>
+    <form id="@Model.BookId" asp-page="/Pay" method="post">
+        <input type="hidden" asp-for="BookId" />
+        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+        <span class="card-text p-1">
+            @Model.Title
+            <button type="submit" class="btn-success btn-sm pull-right" style="float:right">
+                Add To Cart
+            </button>
+        </span>
+
+    </form>
+</div>
+    <br />
+
